@@ -1,0 +1,10 @@
+.tabs {
+    background-color: #FEA700;
+    height: 50px;
+    color: #222222;
+}
+
+.tabs__wrapper {
+    display: grid;
+    grid-template-columns: 50% 50%;
+}

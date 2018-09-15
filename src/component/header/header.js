@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Container from '../container/container';
-import LOGO from '../../icons/md-car.svg';
+import Icon from '../icon/icon';
 import './header.css';
 
 class Header extends Component {
@@ -9,9 +9,8 @@ class Header extends Component {
             <div className="header">
                 <Container>
                     <div className="header__wrapper">
-                        <img src={LOGO}
-                            className="header__logo"
-                            alt="Me Dá Uma Carona" />
+                        <Icon type="car"
+                              className="header__logo" />
                         <h1 className="header__title">
                             ME DÁ UMA CARONA
                         </h1>
