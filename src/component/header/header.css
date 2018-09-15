@@ -1,0 +1,39 @@
+.header {
+    color: #FFF;
+    background: #222222;
+}
+
+.header__wrapper {
+    display: flex;
+    align-items: center;
+    height: 50px;
+}
+
+.header__title {
+    margin: 0px;
+    font-size: 16px;
+    font-weight: normal;
+    white-space: nowrap;
+}
+
+.header__logo {
+    height: 25px;
+    margin-right: 8px;
+}
+
+.header__separator {
+    display: block;
+    width: 100%;
+    flex-shrink: 1;
+    flex-grow: 1;
+}
+
+.header__login-btn {
+    color: #FFF;
+    border: none;
+    background-color: transparent;
+    font-size: 16px;
+    text-decoration: underline;
+    padding: 0px;
+    cursor: pointer;
+}
