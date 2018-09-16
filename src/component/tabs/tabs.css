@@ -8,3 +8,22 @@
     display: grid;
     grid-template-columns: 50% 50%;
 }
+
+.tabs__tab-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 0px;
+    background-color: transparent;
+    height: 50px;
+    cursor: pointer;
+}
+
+.tabs__tab-btn--active {
+    background-color: #FFF;
+}
+
+.tabs__tab-btn__icon {
+    height: 16px;
+    padding-right: 8px;
+}
