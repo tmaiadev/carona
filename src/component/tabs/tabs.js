@@ -7,7 +7,7 @@ import './tabs.css';
 const Tabs = props => {
     return (
         <div className="tabs">
-            <Container>
+            <Container noPadding>
                 <div className="tabs__wrapper">
                     <button className={
                         `tabs__tab-btn ${props.activeTab === 0 ?
