@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Header from '../header/header';
 import Tabs from '../tabs/tabs';
+import Container from '../container/container';
 import './app.css';
 
 class App extends Component {
@@ -14,7 +15,11 @@ class App extends Component {
     if (activePage) {
       return activePage;
     } else {
-      return <span>Carregando...</span>
+      return <Container>
+        <div style={{textAlign: 'center', margin: '16px'}}>
+          Carregando...
+        </div>
+      </Container>
     }
   }
 
