@@ -40,20 +40,20 @@ class SearchPage extends Component {
             <div className="search-page">
                 <form className="search-page__form">
                     <Container>
-                        <Input type="select"
+                        <Input type="search-select"
                                id="from"
                                name="from"
                                label="Saindo de"
                                options={this.state.citiesOptions}
                                required />
-                        <Input type="select"
+                        <Input type="search-select"
                                id="to"
                                name="to"
                                label="Indo para"
                                options={this.state.citiesOptions}
                                required />
                         <Row>
-                            <Input type="select"
+                            <Input type="date"
                                    id="date"
                                    name="date"
                                    label="Data"
