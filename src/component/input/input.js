@@ -20,9 +20,24 @@ class Input extends Component {
         });
     }
 
-
     state = {
         selectedDate: moment()
+    }
+
+    get isMobile() {
+        if( navigator.userAgent.match(/Android/i)
+            || navigator.userAgent.match(/webOS/i)
+            || navigator.userAgent.match(/iPhone/i)
+            || navigator.userAgent.match(/iPad/i)
+            || navigator.userAgent.match(/iPod/i)
+            || navigator.userAgent.match(/BlackBerry/i)
+            || navigator.userAgent.match(/Windows Phone/i)
+            ){
+            return true;
+        }
+        else {
+            return false;
+        }
     }
 
     loadOptions(inputValue, callback) {
@@ -65,15 +80,20 @@ class Input extends Component {
                     break;
 
                 case 'date':
-                    $el = <DatePicker name={this.props.name}
-                                      id={this.props.id}
-                                      dateFormat="DD/MM/YYYY"
-                                      className="input__input"
-                                      selected={this.state.selectedDate}
-                                      locale="pt-br"
-                                      minDate={moment()}
-                                      maxDate={moment().add(30, "days")}
-                                      onChange={selectedDate => this.setState({ selectedDate })} />;
+                    $el = this.isMobile ?
+                            <input type={this.props.type}
+                                   name={this.props.name}
+                                   id={this.props.id}
+                                   className="input__input" /> :
+                            <DatePicker name={this.props.name}
+                                        id={this.props.id}
+                                        dateFormat="DD/MM/YYYY"
+                                        className="input__input"
+                                        selected={this.state.selectedDate}
+                                        locale="pt-br"
+                                        minDate={moment()}
+                                        maxDate={moment().add(30, "days")}
+                                        onChange={selectedDate => this.setState({ selectedDate })} />;
                     break;
 
                 default: 
