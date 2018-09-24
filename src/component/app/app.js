@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Header from '../header/header';
 import Tabs from '../tabs/tabs';
 import Container from '../container/container';
+import Footer from '../footer/footer';
 import './app.css';
 
 class App extends Component {
@@ -59,6 +60,7 @@ class App extends Component {
         <Tabs activeTab={this.state.activeTab}
               onTabChanged={this.onTabChanged.bind(this)} />
         {this.activePage}
+        <Footer />
       </div>
     );
   }
