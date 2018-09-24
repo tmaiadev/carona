@@ -11,6 +11,6 @@ registerServiceWorker();
 {
     const link = document.createElement('link');
     link.rel = 'stylesheet';
-    link.href = 'https://fonts.googleapis.com/css?family=Roboto:400,700';
+    link.href = 'https://fonts.googleapis.com/css?family=Roboto|Bungee+Inline:400,700';
     document.head.appendChild(link);
 }

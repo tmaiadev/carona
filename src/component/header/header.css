@@ -11,15 +11,19 @@
 
 .header__title {
     margin: 0px;
-    font-size: 16px;
+    font-size: 24px;
     font-weight: normal;
     white-space: nowrap;
+    font-family: 'Bungee Inline', cursive;
 }
 
 .header__logo {
     height: 35px;
+    width: 40px;
     margin-right: 8px;
     fill: #FFF;
+    flex-shrink: 0;
+    flex-grow: 0;
 }
 
 .header__separator {
