@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Container from '../container/container';
 import Row from '../row/row';
 import Input from '../input/input';
+import Button from '../button/button';
 import './search-page.css';
 
 class SearchPage extends Component {
@@ -35,10 +36,15 @@ class SearchPage extends Component {
         });
     }
 
+    onFormSubmit(evt) {
+        evt.preventDefault();
+    }
+
     render() {
         return (
             <div className="search-page">
-                <form className="search-page__form">
+                <form className="search-page__form"
+                      onSubmit={this.onFormSubmit.bind(this)}>
                     <Container>
                         <Input type="search-select"
                                id="from"
@@ -66,6 +72,12 @@ class SearchPage extends Component {
                                    options={this.state.periodOptions}
                                    required />
                         </Row>
+                        <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
+                            <Button type="submit"
+                                    icon="search">
+                                Pesquisar
+                            </Button>
+                        </div>
                     </Container>
                 </form>
             </div>
