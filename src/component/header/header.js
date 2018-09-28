@@ -1,71 +1,46 @@
-import React, { Component } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import Container from '../container/container';
 import Icon from '../icon/icon';
 import './header.css';
 
-class Header extends Component {
-    firebase = null;
-    state = { user: null }
-
-    async componentDidMount() {
-        this.firebase = (await import('../../firebase')).default;
-        try {
-            const auth = await this.firebase.auth().getRedirectResult();
-            this.setState({ user: auth.user || false });
-        } catch (e) {
-            console.log(e);
-            alert('Ocorreu um erro ao logar');
-            this.setState({ user: false });
-        }
+const Header = props => {
+    let loginButton;
+    if (props.user === null) {
+        loginButton = null;
+    } else if (props.user) {
+        loginButton = <button className="header__login-btn"
+                              onClick={props.logout}>
+            Sair
+        </button>;
+    } else {
+        loginButton = <button className="header__login-btn"
+                              onClick={props.login}>
+            Entrar
+        </button>;
     }
 
-    async login() {
-        try {
-            this.setState({ user: null });
-            const provider = new this.firebase.auth.FacebookAuthProvider();
-            await this.firebase.auth().signInWithRedirect(provider);
-        } catch (e) {
-            console.log(e);
-            alert('Ocorreu um erro ao logar. Tente novamente mais tarde.');
-        }
-    }
+    return (
+        <div className="header">
+            <Container>
+                <div className="header__wrapper">
+                    <Icon type="car"
+                            className="header__logo" />
+                    <h1 className="header__title">
+                        Carona
+                    </h1>
+                    <div className="header__separator" />
+                    {loginButton}
+                </div>
+            </Container>
+        </div>
+    )
+}
 
-    async logout() {
-        this.firebase.auth().signOut();
-    }
-
-    render() {
-        let loginButton;
-        if (this.state.user === null) {
-            loginButton = null;
-        } else if (this.state.user) {
-            loginButton = <button className="header__login-btn"
-                                  onClick={this.logout.bind(this)}>
-                Sair
-            </button>;
-        } else {
-            loginButton = <button className="header__login-btn"
-                                  onClick={this.login.bind(this)}>
-                Entrar
-            </button>;
-        }
-
-        return (
-            <div className="header">
-                <Container>
-                    <div className="header__wrapper">
-                        <Icon type="car"
-                              className="header__logo" />
-                        <h1 className="header__title">
-                            Carona
-                        </h1>
-                        <div className="header__separator" />
-                        {loginButton}
-                    </div>
-                </Container>
-            </div>
-        )
-    }
+Header.propTypes = {
+    user: PropTypes.any,
+    login: PropTypes.func.isRequired,
+    logout: PropTypes.func.isRequired
 }
 
 export default Header;
