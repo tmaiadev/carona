@@ -1,7 +1,6 @@
 import React from 'react';
 import Container from '../container/container';
 import Icon from '../icon/icon';
-import Row from '../row/row';
 import './footer.css';
 
 export default () => {

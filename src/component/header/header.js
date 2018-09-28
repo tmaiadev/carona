@@ -9,20 +9,21 @@ class Header extends Component {
 
     async componentDidMount() {
         this.firebase = (await import('../../firebase')).default;
-        this.firebase.auth().onAuthStateChanged(user => {
-            if (user) {
-                this.setState({ user });
-            } else {
-                this.setState({ user: false });
-            }
-        })
+        try {
+            const auth = await this.firebase.auth().getRedirectResult();
+            this.setState({ user: auth.user || false });
+        } catch (e) {
+            console.log(e);
+            alert('Ocorreu um erro ao logar');
+            this.setState({ user: false });
+        }
     }
 
     async login() {
         try {
             this.setState({ user: null });
             const provider = new this.firebase.auth.FacebookAuthProvider();
-            await this.firebase.auth().signInWithPopup(provider);
+            await this.firebase.auth().signInWithRedirect(provider);
         } catch (e) {
             console.log(e);
             alert('Ocorreu um erro ao logar. Tente novamente mais tarde.');
